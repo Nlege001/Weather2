@@ -121,6 +121,7 @@ public class TodayWeatherFragment extends Fragment {
 
         );
     }
+    //when app stops
 
     @Override
     public void onStop() {
