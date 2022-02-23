@@ -13,4 +13,6 @@ public interface IOpenWeatherMap {
                                                  @Query("appid") String appid,
                                                  @Query("units") String unit);
 
+
+
 }
