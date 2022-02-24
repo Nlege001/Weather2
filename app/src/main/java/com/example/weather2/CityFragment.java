@@ -170,6 +170,9 @@ public class CityFragment extends Fragment {
                 }
             });
 
+            searchBar.setLastSuggestions(listCity);
+            loading.setVisibility(View.VISIBLE);
+
         }
     }
 
