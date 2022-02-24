@@ -10,6 +10,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        // e.g this is how you would add jitpack
+        maven { url "https://jitpack.io" }
+        // Add any repositories you would be a
     }
 }
 rootProject.name = "Weather2"

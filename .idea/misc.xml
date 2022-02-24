@@ -6,8 +6,9 @@
         <entry key="app/src/main/res/drawable/border.xml" value="0.1645" />
         <entry key="app/src/main/res/drawable/cell.xml" value="0.1645" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_city.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_forecast.xml" value="0.14114583333333333" />
-        <entry key="app/src/main/res/layout/fragment_today_weather.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/layout/fragment_today_weather.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_weather_forecast.xml" value="0.335" />
       </map>
     </option>

@@ -67,10 +67,15 @@ public class ForecastFragment extends Fragment {
         return itemView;
     }
     @Override
-    public void onStop() {
+    public void onDestroy(){
+        compositeDisposable.clear();
+        super.onDestroy();
+    }
+
+    @Override
+    public void onStop(){
         compositeDisposable.clear();
         super.onStop();
-
     }
 
 
