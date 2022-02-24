@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.example.weather2.Adapter.WeatherForecastAdapter;
 import com.example.weather2.Common.Common;
 import com.example.weather2.Model.WeatherForecastResult;
+import com.example.weather2.Model.WeatherResult;
 import com.example.weather2.Retrofit.IOpenWeatherMap;
 import com.example.weather2.Retrofit.RetrofitClient;
 
@@ -110,6 +111,6 @@ public class ForecastFragment extends Fragment {
 
         WeatherForecastAdapter adapter = new WeatherForecastAdapter(getContext(), weatherForecastResult);
         recycler_forecast.setAdapter(adapter);
-
     }
+
 }
