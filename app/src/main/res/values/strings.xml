@@ -2,4 +2,5 @@
     <string name="app_name"> Your Weather</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Today\'s Weather</string>
+    <string name="about">This is an up-to-date weather app. Please follow the links below for more info</string>
 </resources>
