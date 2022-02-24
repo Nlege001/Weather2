@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Weather2</string>
+    <string name="app_name"> Your Weather</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Today\'s Weather</string>
 </resources>

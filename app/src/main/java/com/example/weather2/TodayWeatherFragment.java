@@ -2,6 +2,7 @@ package com.example.weather2;
 
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,10 +19,10 @@ import com.example.weather2.Common.Common;
 import com.example.weather2.Model.WeatherResult;
 import com.example.weather2.Retrofit.IOpenWeatherMap;
 import com.example.weather2.Retrofit.RetrofitClient;
-import com.google.android.material.snackbar.Snackbar;
 import com.squareup.picasso.Picasso;
 
-import io.reactivex.Scheduler;
+import java.util.Objects;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
@@ -31,9 +33,10 @@ import retrofit2.Retrofit;
 public class TodayWeatherFragment extends Fragment {
 
     ImageView img_weather;
-    TextView txt_city_name, txt_humidity, txt_sunrise, txt_sunset, txt_pressure, txt_temperature, txt_description, txt_date_time, txt_wind, txt_geo_coord;
+    TextView txt_city_name, txt_humidity, txt_sunrise, txt_sunset, txt_pressure, txt_temperature, txt_description, txt_date_time, txt_wind,txt_feels_like ,txt_geo_coord;
     LinearLayout weather_panel;
     ProgressBar loading;
+    RelativeLayout relativeLayout;
 
     CompositeDisposable compositeDisposable;
     IOpenWeatherMap mService;
@@ -71,6 +74,8 @@ public class TodayWeatherFragment extends Fragment {
         txt_date_time = itemView.findViewById(R.id.txt_date_time);
         txt_wind = itemView.findViewById(R.id.txt_wind);
         txt_geo_coord = itemView.findViewById(R.id.txt_geo_coord);
+        txt_feels_like = itemView.findViewById(R.id.txt_feels_like);
+        relativeLayout = itemView.findViewById(R.id.today_weather);
 
         weather_panel = itemView.findViewById(R.id.weather_panel);
         loading = itemView.findViewById(R.id.loading);
@@ -80,6 +85,7 @@ public class TodayWeatherFragment extends Fragment {
 
         return itemView;
     }
+
 
     private void getWeatherInformation() {
         compositeDisposable.add(mService.getWeatherByLatLng(String.valueOf(Common.current_location.getLatitude()),
@@ -105,6 +111,22 @@ public class TodayWeatherFragment extends Fragment {
                         txt_sunrise.setText(Common.convertUnixToHour(weatherResult.getSys().getSunrise()));
                         txt_sunset.setText(Common.convertUnixToHour(weatherResult.getSys().getSunset()));
                         txt_geo_coord.setText(new StringBuilder(weatherResult.getCoord().toString()).toString());
+                        txt_feels_like.setText(new StringBuilder("Feels Like ").append(weatherResult.getMain().getFeels_like()).append("°C").toString());
+
+                        /*if(Common.checktimings(Common.convertUnixToHour(weatherResult.getDt()),"12:00")){
+                            relativeLayout.setBackground(ContextCompat.getDrawable(requireContext(), R.drawable.day1));
+                        }
+                        else{
+                            relativeLayout.setBackground(ContextCompat.getDrawable(requireContext(), R.drawable.night));
+
+                        }*/
+
+                        if(Common.checktimings1(Common.convertUnixToHour(weatherResult.getDt()))){
+                            relativeLayout.setBackground(ContextCompat.getDrawable(requireContext(), R.drawable.day1));
+                        }
+                        else{
+                            relativeLayout.setBackground(ContextCompat.getDrawable(requireContext(), R.drawable.night));
+                        }
 
                         weather_panel.setVisibility(View.VISIBLE);
                         loading.setVisibility(View.GONE);

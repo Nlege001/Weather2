@@ -3,6 +3,7 @@ package com.example.weather2;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
@@ -10,6 +11,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -44,9 +46,10 @@ public class CityFragment extends Fragment {
     private List<String> lstCities;
     private MaterialSearchBar searchBar;
     ImageView img_weather;
-    TextView txt_city_name, txt_humidity, txt_sunrise, txt_sunset, txt_pressure, txt_temperature, txt_description, txt_date_time, txt_wind, txt_geo_coord;
+    TextView txt_city_name, txt_humidity, txt_sunrise, txt_sunset, txt_pressure, txt_temperature, txt_description, txt_date_time, txt_wind, txt_feels_like ,txt_geo_coord;
     LinearLayout weather_panel;
     ProgressBar loading;
+    FrameLayout frameLayout;
 
     CompositeDisposable compositeDisposable;
     IOpenWeatherMap mService;
@@ -86,6 +89,8 @@ public class CityFragment extends Fragment {
         txt_date_time = itemView.findViewById(R.id.txt_date_time_1);
         txt_wind = itemView.findViewById(R.id.txt_wind_1);
         txt_geo_coord = itemView.findViewById(R.id.txt_geo_coord_1);
+        txt_feels_like = itemView.findViewById(R.id.txt_feels_like_1);
+        frameLayout = itemView.findViewById(R.id.city_background);
 
         weather_panel = itemView.findViewById(R.id.weather_panel_1);
         loading = itemView.findViewById(R.id.loading_1);
@@ -199,6 +204,15 @@ public class CityFragment extends Fragment {
                         txt_sunrise.setText(Common.convertUnixToHour(weatherResult.getSys().getSunrise()));
                         txt_sunset.setText(Common.convertUnixToHour(weatherResult.getSys().getSunset()));
                         txt_geo_coord.setText(new StringBuilder(weatherResult.getCoord().toString()).toString());
+                        txt_feels_like.setText(new StringBuilder("Feels Like ").append(weatherResult.getMain().getFeels_like()).append("°C").toString());
+
+                        if(Common.checktimings1(Common.convertUnixToHour(weatherResult.getDt()))){
+                            frameLayout.setBackground(ContextCompat.getDrawable(requireContext(), R.drawable.day1));
+                        }
+                        else{
+                            frameLayout.setBackground(ContextCompat.getDrawable(requireContext(), R.drawable.night));
+                        }
+
 
                         weather_panel.setVisibility(View.VISIBLE);
                         loading.setVisibility(View.GONE);

@@ -9,6 +9,11 @@
     app:cardElevation="8dp"
     app:cardUseCompatPadding="true">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/background">
+
     <LinearLayout
         android:layout_margin="16dp"
         android:orientation="vertical"
@@ -265,6 +270,8 @@
 
         </TableLayout>
     </LinearLayout>
+
+    </FrameLayout>
 
 
 </androidx.cardview.widget.CardView>

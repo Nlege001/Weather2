@@ -5,10 +5,14 @@ import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.weather2.Common.Common;
@@ -61,6 +65,14 @@ public class WeatherForecastAdapter extends RecyclerView.Adapter<WeatherForecast
 
         holder.txt_geo_coord.setText(new StringBuilder(String.valueOf(weatherForecastResult.city.coord)));
 
+        if(Common.checktimings1(Common.convertUnixToHour(weatherForecastResult.list.get(position).dt))){
+            holder.cardView.setBackground(ContextCompat.getDrawable(context, R.drawable.day1));
+        }
+        else{
+            holder.cardView.setBackground(ContextCompat.getDrawable(context, R.drawable.night));
+
+        }
+
 
 
     }
@@ -73,6 +85,7 @@ public class WeatherForecastAdapter extends RecyclerView.Adapter<WeatherForecast
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView txt_city_name, txt_humidity, txt_sunrise, txt_sunset, txt_pressure, txt_temperature, txt_description, txt_date_time, txt_wind, txt_geo_coord;
         ImageView img_weather;
+        FrameLayout cardView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -87,6 +100,7 @@ public class WeatherForecastAdapter extends RecyclerView.Adapter<WeatherForecast
             txt_pressure = itemView.findViewById(R.id.txt_pressure_5);
             txt_wind = itemView.findViewById(R.id.txt_wind_5);
             txt_geo_coord = itemView.findViewById(R.id.txt_geo_coord_5);
+            cardView = itemView.findViewById(R.id.background);
 
         }
     }

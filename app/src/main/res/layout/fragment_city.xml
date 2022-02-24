@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/city_background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".CityFragment">
@@ -47,6 +48,7 @@
                         android:id="@+id/txt_city_name_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
                         android:text="Weather in Houston,TX"
                         android:textColor="@color/colorPrimary"
                         android:textSize="24sp"
@@ -55,6 +57,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -62,6 +65,7 @@
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:src="@mipmap/ic_launcher" />
+
 
                         <TextView
                             android:id="@+id/txt_temprature_1"
@@ -76,9 +80,20 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/txt_feels_like_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="Weather in Houston,TX"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp"
+                        android:textStyle="italic" />
+
+                    <TextView
                         android:id="@+id/txt_description_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
                         android:text="Weather in Houston,TX"
                         android:textColor="@color/colorPrimary"
                         android:textSize="18sp"
@@ -90,6 +105,7 @@
                         android:layout_height="wrap_content"
                         android:text="Weather in Houston,TX"
                         android:textColor="@color/colorPrimary"
+                        android:layout_gravity="center_horizontal"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
